@@ -8,7 +8,7 @@
     // do not access this with $("...")
     // See http://codeimpossible.com/2010/01/13/solving-document-ready-is-not-a-function-and-other-problems/
     jQuery(document).ready(function(){
-        jQuery(".chzn-select").chosen().change(function() {
+        jQuery("#project-jump-id").chosen().change(function() {
             var id = jQuery("#project-jump-id").val();
             window.location.href = "/projects/" + id;
         });
