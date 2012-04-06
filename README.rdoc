@@ -1,0 +1,25 @@
+= Enable Redmine/Chiliproject Modules
+
+Allows batch enabling of project modules
+
+== Getting the plugin
+
+A copy of the plugin can be downloaded from {GitHub}[https://github.com/EugenMayer/enable_chiliproject_modules]
+
+
+== Installation and Setup
+
+Copy the script in your application root
+
+== Usage
+
+1. Enter the modules you want to enable in the script
+2. Run the script with <tt>script/runner -e <your Rails environment> enableModules.rb</tt>
+
+== License
+
+This script is licensed under the GNU AGPL v3. See COPYRIGHT.txt and AGPL.txt for details.
+
+== Sponsoring
+
+The development of this script was sponsored by {KontextWork}[http://kontextwork.de]

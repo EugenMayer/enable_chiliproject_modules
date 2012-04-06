@@ -3,27 +3,31 @@
 # Run with script/runner -e production enableModules.rb
 
 failedProjects = []
+modules_to_enable = ['code_review', 'commit_relation_editor']
 
 Project.find(:all).each do |project|
   print "Enabling modules for project '#{project.identifier}' ... "
   enabled_module_names = project.enabled_module_names
 
-  if !enabled_module_names.include?("code_review")
-    enabled_module_names.push("code_review")
-  end
-  if !enabled_module_names.include?("commit_relation_editor")
-    enabled_module_names.push("commit_relation_editor")
+  modules_to_enable.each do |mod|
+    if !enabled_module_names.include?(mod)
+      enabled_module_names.push(mod)
+      # can do other stuff for module mod heres
+    end
   end
 
   project.enabled_module_names = enabled_module_names
-  if !project.save
+  if project.save
+    puts "done"
+  else
     failedProjects.push(project)
     puts "failed"
   end
-  puts "done"
 end
 
-if !failedProjects.empty?
+if failedProjects.empty?
+  puts "Successful on all projects"
+else
   puts "Failed on the follwing projects"
   failedProjects.each {|p| puts p.identifier}
 end
